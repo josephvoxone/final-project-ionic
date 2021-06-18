@@ -1,0 +1,60 @@
+<ion-content>
+  <div class="title">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="10" no-padding>
+            <ion-card-subtitle color="light">Selamat Datang</ion-card-subtitle>
+            <ion-card-title>{{user.name}}</ion-card-title>
+          </ion-col>
+          <ion-col text-right size="2" no-padding>
+            <ion-spinner name="crescent" class="avatar" *ngIf="!user.image"></ion-spinner>
+            <img class="avatar" [src]="user.image" *ngIf="user.image" [routerLink]="['/akun-profile']" />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+
+    <ion-slides pager="true" [options]="slideOpts">
+      <ion-slide text-left class="slide-menu">
+        <ion-card class="meal" [routerLink]="['/mealbox']" routerDirection="forward">
+          <!-- <img src="assets/local/login-food.jpg" /> -->
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-icon name="archive"></ion-icon> MENU KATERING
+            </ion-card-subtitle>
+            <ion-card-title>Nasi Kotak</ion-card-title>
+            <p>Pesan nasi kotak, atur lauk, sayur-mayur rempah-rempah sesuai dengan selera anda. </p>
+          </ion-card-header>
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide text-left class="slide-menu">
+        <ion-card class="prasmanan" [routerLink]="['/prasmanan']" routerDirection="forward">
+          <!-- <img src="assets/local/login-food.jpg" /> -->
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-icon name="restaurant"></ion-icon> MENU KATERING
+            </ion-card-subtitle>
+            <ion-card-title>Prasmanan</ion-card-title>
+            <p>Memudahkan untuk mengatur menu makanan terbaik untuk acara spesial anda. </p>
+          </ion-card-header>
+        </ion-card>
+      </ion-slide>
+
+      <ion-slide text-left class="slide-menu">
+        <ion-card class="cbreak" [routerLink]="['/cbreak']" routerDirection="forward">
+          <!-- <img src="assets/local/login-food.jpg" /> -->
+          <ion-card-header>
+            <ion-card-subtitle>
+              <ion-icon name="cafe"></ion-icon> MENU KATERING
+            </ion-card-subtitle>
+            <ion-card-title>Coffee Break</ion-card-title>
+            <p>Persiapkan yang terbaik, atur makanan sesuai dengan kebutuhan anda. </p>
+          </ion-card-header>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+</ion-content>

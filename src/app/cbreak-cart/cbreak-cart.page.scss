@@ -1,0 +1,42 @@
+ion-fab {
+  ion-badge {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    z-index: 1;
+  }
+}
+
+ion-button.nyam-btn {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+}
+
+ion-button {
+  letter-spacing: 2pt;
+}
+
+.belowzero {
+  position: fixed;
+  bottom: 2%;
+  width: 100%;
+  left: 0;
+  padding: 0 16px;
+}
+
+ion-thumbnail img {
+  border-radius: 10px;
+}
+
+ion-item-option {
+  border-radius: 0 10px 10px 0;
+  margin: 7px 0;
+}
+
+.list {
+  ion-item {
+    border-right: 5px solid rgb(250, 170, 9);
+  }
+  ion-item-options {
+    border: none;
+  }
+}

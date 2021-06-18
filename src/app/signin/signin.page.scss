@@ -1,0 +1,50 @@
+.bg-login {
+  background: url("/assets/local/content/logo-trans.png"), linear-gradient(rgba(251, 175, 7, 0.48), #921f00),
+    url("/assets/local/content/pattern.jpg");
+  height: 250px;
+  background-position: center, center, center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  margin-top: -45px;
+  background-size: 45%, cover, 200%;
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.login-card {
+  border-radius: 20px 20px 0 0;
+  background: #fff;
+  margin-top: -20px;
+  border-top: 5px solid #de4700;
+}
+
+ion-button {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+  letter-spacing: 2pt;
+}
+
+.item-forgot {
+  background: none;
+  border: 2px solid #ababab;
+  border-radius: 25px;
+  margin: 16px 0px;
+  color: #ababab;
+}
+
+ion-input {
+  --color: #000;
+}
+
+.link label {
+  color: #777;
+}
+
+.link b {
+  color: #e6421d;
+}
+
+p {
+  font-size: smaller;
+}

@@ -1,0 +1,101 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Coffee Break</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="[ '/help', { tipe: 'cbreak' } ]">
+        <ion-icon slot="icon-only" name="help" color="dark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <div [routerLink]="[ '/cbreak-search' ]" style="outline: none">
+    <ion-searchbar disabled placeholder="Cari menu apa ?" animated></ion-searchbar>
+  </div>
+</ion-header>
+
+<ion-content fullscreen padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+  <ion-card-title class="header">Makanan Paling Dicari</ion-card-title>
+  <div class="item-scrolling">
+    <ng-container *ngIf="items; else elseScroll">
+      <ion-card no-margin class="item btn-nyam" *ngFor="let item of itemsFav" (click)="gotoPras(item)">
+        <div class="konten">
+          <img [src]="item.image" />
+          <span *ngIf="item.jumlah_rate > 0">
+            <ion-icon name="star" color="secondary"></ion-icon> {{item.jumlah_rate | number:'1.1-1'}}
+          </span>
+        </div>
+        <div class="content">
+          <ion-card-subtitle>{{item.name_label}}</ion-card-subtitle>
+          <ion-card-title>{{item.name}}</ion-card-title>
+          <ion-card-title class="price">{{item.price | currency:'Rp. ' : 'symbol' : '1.0'}}</ion-card-title>
+          <p>{{item.desc}}</p>
+        </div>
+      </ion-card>
+    </ng-container>
+
+    <ng-template #elseScroll>
+      <ion-card no-margin class="item btn-nyam" style="margin-right: 15px" *ngFor="let number of [0,1,2,3,4]">
+        <ion-skeleton-text animated style="width: 150px;height: 170px;"></ion-skeleton-text>
+        <div class="content">
+          <ion-card-subtitle>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </div>
+      </ion-card>
+    </ng-template>
+  </div>
+
+  <div style="clear: both"></div>
+
+  <ion-card-title class="header">Telusuri Makanan</ion-card-title>
+  <ng-container *ngIf="items; else elseTemplate">
+    <ion-card no-margin class="item" *ngFor="let item of items" (click)="gotoPras(item)">
+      <div class="konten">
+        <img [src]="item.image" />
+        <span *ngIf="item.jumlah_rate > 0">
+          <ion-icon name="star" color="secondary"></ion-icon> {{item.jumlah_rate | number:'1.1-1'}}
+        </span>
+      </div>
+      <div class="content">
+        <ion-card-subtitle>{{item.name_label}}</ion-card-subtitle>
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <ion-card-title class="price">{{item.price | currency:'Rp. ' : 'symbol' : '1.0'}}</ion-card-title>
+        <p>{{item.desc}}</p>
+      </div>
+    </ion-card>
+  </ng-container>
+
+  <ng-template #elseTemplate>
+    <ion-card no-margin class="item" *ngFor="let number of [0,1]">
+      <ion-skeleton-text animated style="width: 150px;height: 150px;"></ion-skeleton-text>
+      <div class="content">
+        <ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </ion-card-subtitle>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </div>
+    </ion-card>
+  </ng-template>
+</ion-content>
+
+<ion-footer>
+  <div class="belowzero" *ngIf="cart.length > 0">
+    <ion-button class="nyam-btn" margin-top expand="block" strong (click)="openCart()">
+      <ion-icon name="cafe" slot="start"></ion-icon>
+      <ion-label>
+        <ion-card-title>
+          {{cart.length}} Menu
+        </ion-card-title>
+        <p>Katering Coffee Break</p>
+      </ion-label>
+    </ion-button>
+  </div>
+</ion-footer>

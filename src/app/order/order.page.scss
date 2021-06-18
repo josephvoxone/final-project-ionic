@@ -1,0 +1,20 @@
+ion-button.nyam-btn {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+}
+
+ion-button {
+  letter-spacing: 2pt;
+}
+
+.belowzero {
+  position: sticky;
+  bottom: 2%;
+  width: 100%;
+  left: 0;
+  padding: 0 16px;
+  z-index: 999;
+}
+
+ion-thumbnail img {
+  border-radius: 10px;
+}

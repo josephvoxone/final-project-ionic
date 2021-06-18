@@ -1,0 +1,21 @@
+.item-forgot {
+  background: none;
+  border: 2px solid #ababab;
+  border-radius: 25px;
+  margin: 16px 0px;
+  color: #ababab;
+}
+
+ion-button {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+  letter-spacing: 2pt;
+}
+
+.konten {
+  display: grid;
+  
+  img {
+    height: 170px;
+    margin: auto;
+  }
+}

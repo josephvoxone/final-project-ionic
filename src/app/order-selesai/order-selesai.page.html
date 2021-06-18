@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="[ '/tabs/app/tabs/tab-order' ]" routerDirection="back" text="" color="dark">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item-divider>
+    <ion-list-header>
+      <ion-label><b>No. Transaksi</b></ion-label>
+      <ion-label style="padding-right: 16px;"><b>{{trans.kode}}</b></ion-label>
+    </ion-list-header>
+  </ion-item-divider>
+
+  <ion-list>
+    <ion-text color="dark" class="status" *ngIf="trans.info">
+      <p padding>
+        <ion-icon name="information-circle"></ion-icon> {{trans.info}}
+      </p>
+    </ion-text>
+
+    <ion-list-header>
+      <ion-label>Informasi Tagihan</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Status Transaksi</ion-label>
+      <ion-note slot="end" class="status-trans" no-margin>
+        <ion-icon [name]="trans.icon"></ion-icon> {{trans.status_text}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Metode Pembayaran</ion-label>
+      <ion-note slot="end">Transfer BCA</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total Pesanan</ion-label>
+      <ion-note slot="end">{{ trans.subtotal | currency:'Rp. ' : 'symbol' : '1.0' }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ongkos Kirim</ion-label>
+      <ion-note slot="end">{{ trans.ongkir | currency:'Rp. ' : 'symbol' : '1.0' }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Kode Transfer</ion-label>
+      <ion-note slot="end">{{trans.kode_unik | number:0 }}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Total Tagihan</ion-label>
+      <ion-note slot="end">{{ trans.total | currency:'Rp. ' : 'symbol' : '1.0' }}</ion-note>
+    </ion-item>
+
+    <ion-item-divider></ion-item-divider>
+    <ion-list-header>
+      <ion-label>Informasi Pesanan</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Waktu Pemesanan</ion-label>
+      <ion-note slot="end">{{trans.tgl_trans}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tanggal Pengiriman</ion-label>
+      <ion-note slot="end">{{trans.tgl_kirim}}</ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-label>Jenis Pemesanan</ion-label>
+      <ion-note slot="end">{{trans.name_kategori}}</ion-note>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label>Alamat Pengiriman</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-note>{{trans.address}}</ion-note>
+    </ion-item>
+    <ion-item lines="none" *ngIf="trans.catatan">
+      <ion-label>Catatan</ion-label>
+    </ion-item>
+    <ion-item *ngIf="trans.catatan">
+      <ion-note>{{trans.catatan }}</ion-note>
+    </ion-item>
+
+    <ion-item-divider></ion-item-divider>
+    <ion-list-header>
+      <ion-label>Daftar Pesanan</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of selectedItems">
+      <ion-label>{{item.item_name}}</ion-label>
+      <ion-note slot="end">{{item.price | currency:'Rp. ':'symbol'}}</ion-note>
+    </ion-item>
+
+    <!-- Dekorasi -->
+    <ng-container *ngIf="trans.name_kategori != 'Nasi Kotak'">
+      <ion-item-divider></ion-item-divider>
+      <ion-list-header>
+        <ion-label>Dekorasi</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img [src]="trans.image_decoration" />
+        </ion-thumbnail>
+        <ion-label>{{trans.name_decoration}}</ion-label>
+      </ion-item>
+    </ng-container>
+
+    <ng-container *ngIf="review.length > 0">
+      <ion-item-divider></ion-item-divider>
+      <ion-list-header>
+        <ion-label>Ulasan Anda</ion-label>
+      </ion-list-header>
+      <ng-container *ngFor="let rev of review">
+        <ion-item>
+          <ion-label>Kualitas Makanan</ion-label>
+          <ion-note slot="end" class="status-trans" no-margin>
+            {{rev.rate_taste | number:'1.1-1'}} <ion-icon name="star"></ion-icon>
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Pelayanan</ion-label>
+          <ion-note slot="end" class="status-trans" no-margin>
+            {{rev.rate_work | number:'1.1-1'}} <ion-icon name="star"></ion-icon>
+          </ion-note>
+        </ion-item>
+        <ion-item>
+          <ion-label>Persiapan</ion-label>
+          <ion-note slot="end" class="status-trans" no-margin>
+            {{rev.rate_time}} <ion-icon name="speedometer"></ion-icon>
+          </ion-note>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+  </ion-list>
+
+  <!-- Pembayaran -->
+  <ng-container *ngIf="trans.status_order == 1 || trans.status_order == -3">
+    <ion-item-divider></ion-item-divider>
+    <ion-list-header>
+      <ion-label>Petunjuk Pembayaran</ion-label>
+    </ion-list-header>
+    <ion-item text-center lines="none">
+      <ion-label>Silakan transfer pembayaran sebesar</ion-label>
+    </ion-item>
+    <ion-item text-center lines="none" (click)="copyClip(trans.total)">
+      <ion-label color="danger">
+        <h2>{{ trans.total | currency:'Rp. ' : 'symbol' : '1.0' }}</h2>
+      </ion-label>
+      <ion-icon name="browsers" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item text-center lines="none">
+      <ion-label>ke rekening {{company.bank_name}} berikut</ion-label>
+    </ion-item>
+    <ion-item text-center lines="none" (click)="copyClip(company.no_rek)">
+      <ion-label>
+        <h2>{{company.no_rek}}</h2>
+        <p>Atas nama {{company.nama_rek}}</p>
+      </ion-label>
+      <ion-icon name="browsers" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item text-warp text-center>
+      <p text-center style="font-size: smaller;">Pesanan anda akan terkonfirmasi maksimal 1x24 jam.</p>
+    </ion-item>
+  </ng-container>
+
+  <div class="belowzero">
+    <ion-button margin-top expand="block" strong (click)="presentChoice()"
+      [hidden]="trans.status_order == -1 || trans.status_order == -4 || trans.status_order > 1">
+      Opsi</ion-button>
+    <ion-button margin-top expand="block" strong [routerLink]="[ '/order-rate', { id: trans.id} ]"
+      routerDirection="forward" *ngIf="trans.status_order == 4 && review.length == 0">Beri Ulasan</ion-button>
+    <!-- <ion-button disabled class="nyam-btn" margin-top expand="block" strong>{{trans.status_text}}</ion-button> -->
+  </div>
+</ion-content>

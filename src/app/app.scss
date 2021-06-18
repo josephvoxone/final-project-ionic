@@ -1,0 +1,37 @@
+// App Styles
+// ----------------------------------------------------------------------------
+// Put style rules here that you want to apply to the entire application. These
+// styles are for the entire app and not just one component. Additionally, this
+// file can hold Sass mixins, functions, and placeholder classes to be imported
+// and used throughout the application.
+
+// Button Effect
+ion-card .btn-nyam {
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+}
+
+// Alert Custom
+.alert-wrapper {
+  box-shadow: 0 0 20px #35353552;
+  border-top: 3px solid #629aff;
+}
+
+ion-button.button-disabled {
+  --background: #696969 !important;
+  --color: #000; background: #fff;
+}
+
+ion-content {
+  --background: #fdfdfd;
+}
+
+ion-refresher {
+  z-index: 0;
+}
+
+// Modifikasi Footer
+// ion-footer{
+//   background: linear-gradient(0, #dadada, transparent);
+// }

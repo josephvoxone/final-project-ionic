@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Alamat Tersimpan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list lines="none">
+    <!-- Profile -->
+    <ion-list-header>
+      <ion-label><b>Tambah Alamat</b></ion-label>
+    </ion-list-header>
+    <ion-item [routerLink]="[ '/akun-alamatopsi', { mode: 'insert' } ]">
+      <ion-icon mode="md" slot="start" color="medium" name="lock"></ion-icon>
+      <ion-label>
+        <h2>Tambahkan Alamat Acara</h2>
+        <p>Simpan tempat acara atau rumahmu</p>
+      </ion-label>
+    </ion-item>
+    <!-- Tersimpan -->
+    <ion-list-header>
+      <ion-label><b>Tersimpan</b></ion-label>
+    </ion-list-header>
+    <!-- [routerLink]="[ '/akun-alamatopsi', { mode: a } ]" -->
+    <ion-item *ngFor="let a of alamat" (click)="goDetail(a)">
+      <ion-icon mode="md" slot="start" color="medium" name="bookmark"></ion-icon>
+      <ion-label>
+        <h5>{{a.name}}</h5>
+        <p>
+          <ion-icon name="pin"></ion-icon> {{a.address}}
+        </p>
+        <p *ngIf="a.detail">
+          <ion-icon name="send"></ion-icon> {{a.detail}}
+        </p>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+</ion-content>

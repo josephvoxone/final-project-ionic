@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar lines="none">
+    <ion-title>Umpan Balik</ion-title>
+    <ion-buttons slot="primary" [routerLink]="[ '/order-selesai', { id: star.id_htrans} ]" routerDirection="back">
+      <ion-icon name="close" slot="end"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="umpanbalik">
+    <img padding-bottom src="assets/local/content/vote.png" />
+    <div class="konten">
+      <p>Bantu kami membuat acaramu lebih baik dengan memberikan umpan balik pada layanan katering.</p>
+      <div class="review">
+        <ion-card-subtitle>Kualitas Makanan</ion-card-subtitle>
+        <rating [(ngModel)]="star.rate_taste" readonly="false" size="40" (rateChange)="logRatingChange($event)">
+        </rating>
+      </div>
+      <div class="review">
+        <ion-card-subtitle>Pelayanan</ion-card-subtitle>
+        <rating [(ngModel)]="star.rate_work" readonly="false" size="40" (rateChange)="logRatingChange($event)">
+        </rating>
+      </div>
+      <div class="review">
+        <ion-card-subtitle>Persiapan</ion-card-subtitle>
+        <ion-chip>
+          <ion-icon name="speedometer" color="secondary"></ion-icon>
+          <ion-select padding-horizontal placeholder="Lebih Awal ?" [(ngModel)]="star.rate_time" interface="popover">
+            <ion-select-option value="5" checked>Lebih Awal</ion-select-option>
+            <ion-select-option value="3">Tepat Waktu</ion-select-option>
+            <ion-select-option value="1">Terlambat</ion-select-option>
+          </ion-select>
+        </ion-chip>
+        <!-- <rating [(ngModel)]="star.rate_time" readonly="false" size="40" (rateChange)="logRatingChange($event)">
+        </rating> -->
+      </div>
+
+      <div class="review">
+        <ion-card-subtitle>Lainnya</ion-card-subtitle>
+        <ion-item lines="none" class="catatan">
+          <ion-textarea [(ngModel)]="star.desc" text-center placeholder="apa yang perlu kami perbaiki ?"></ion-textarea>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+
+  <div class="belowzero">
+    <ion-button class="nyam-btn" margin-top expand="block" strong (click)="goFavor()"
+      [disabled]="star.rate_taste == 0 || star.rate_time == 0 || star.rate_work == 0">Selanjutnya
+    </ion-button>
+  </div>
+</ion-content>

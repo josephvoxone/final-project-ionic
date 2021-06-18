@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dekorasi</ion-title>
+  </ion-toolbar>
+  <ion-searchbar animated placeholder="Cari Dekorasi ?" [(ngModel)]="kueri.search" (ionChange)="findItem()">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent"></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="items">
+    <ion-card-title class="header">Telusuri Dekorasi</ion-card-title>
+    <ion-card no-margin class="item btn-nyam" *ngFor="let item of items" (click)="goDetail(item)">
+      <img [src]="item.image" />
+      <div class="content">
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <p>{{item.desc}}</p>
+      </div>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="loading">
+    <ion-card no-margin class="item" *ngFor="let number of [0,1,2,3]">
+      <ion-skeleton-text animated style="width: 150px;height: 150px;"></ion-skeleton-text>
+      <div class="content">
+        <ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </ion-card-subtitle>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </div>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !found">
+    <div class="makeitcenter">
+      <img class="opsimg" src="assets/local/content/shop.png" />
+      <ion-card-title>Oops !</ion-card-title>
+      <ion-card-content no-padding>
+        <p padding-horizontal>Sepertinya dekorasi yang anda cari tidak tersedia, coba cari yang lainnya.</p>
+      </ion-card-content>
+    </div>
+  </ng-container>
+</ion-content>

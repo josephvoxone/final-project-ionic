@@ -1,0 +1,55 @@
+.umpanbalik {
+  display: grid;
+  padding: 20px 30px;
+  text-align: center;
+
+  .cookie {
+    height: 200px;
+    margin: auto;
+  }
+
+  ion-card-title {
+    font-size: 15pt;
+  }
+
+  .konten p {
+    font-size: 10pt;
+    margin-top: 5px;
+    margin-bottom: 30px;
+    position: relative;
+  }
+
+  .konten p:after {
+    content: "";
+    position: absolute;
+    width: 25%;
+    height: 5px;
+    border-radius: 15px;
+    left: 31vw;
+    bottom: -15px;
+    background: #263146;
+  }
+
+  ion-item {
+    img {
+      border-radius: 10px;
+    }
+  }
+}
+
+ion-button.nyam-btn {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+}
+
+ion-button {
+  letter-spacing: 2pt;
+}
+
+.belowzero {
+  position: sticky;
+  bottom: 2%;
+  width: 100%;
+  left: 0;
+  padding: 0 25px;
+  z-index: 3;
+}

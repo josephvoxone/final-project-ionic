@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Pesanan</ion-title>
+    </ion-toolbar>
+
+    <ion-segment color="secondary" style="padding:0 16px 10px 16px" (ionChange)="gantiStatus($event)">
+        <ion-segment-button checked href="#proses" value="proses">Proses</ion-segment-button>
+        <ion-segment-button href="#selesai" value="selesai"> Selesai</ion-segment-button>
+        <ion-segment-button href="#batal" value="batal"> Batal</ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-down" refreshingSpinner="crescent">
+        </ion-refresher-content>
+    </ion-refresher>
+
+    <ng-container *ngIf="loading">
+        <div class="makeitcenter">
+            <ion-spinner name="crescent"></ion-spinner>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && headers.length > 0;">
+        <ion-card *ngFor="let header of headers" [routerLink]="[ '/order-selesai', {id: header.id} ]"
+            routerDirection="forward">
+            <ion-card-subtitle *ngIf="header.name_kategori == 'Prasmanan'" no-margin>
+                <strong class="badge-order">
+                    <ion-icon name="restaurant"></ion-icon> {{header.name_kategori}}
+                </strong>
+                <strong>
+                    <ion-icon [name]="header.icon"></ion-icon> {{header.status_text}}
+                </strong>
+            </ion-card-subtitle>
+            <ion-card-subtitle *ngIf="header.name_kategori == 'Coffee Break'" no-margin>
+                <strong style="background: #795548" class="badge-order">
+                    <ion-icon name="cafe"></ion-icon> {{header.name_kategori}}
+                </strong>
+                <strong>
+                    <ion-icon [name]="header.icon"></ion-icon> {{header.status_text}}
+                </strong>
+            </ion-card-subtitle>
+            <ion-card-subtitle *ngIf="header.name_kategori == 'Nasi Kotak'" no-margin>
+                <strong style="background: #F44336;" class="badge-order">
+                    <ion-icon name="archive"></ion-icon> {{header.name_kategori}}
+                </strong>
+                <strong>
+                    <ion-icon [name]="header.icon"></ion-icon> {{header.status_text}}
+                </strong>
+            </ion-card-subtitle>
+            <ion-item lines="none">
+                <ion-label>
+                    <p><strong>{{header.waktu}}</strong></p>
+                    <p>{{header.address}}</p>
+                </ion-label>
+                <ion-note slot="end" text-center>
+                    <ion-label>
+                        <p class="harga">
+                            {{header.total | currency:'Rp. ' : 'symbol' : '1.0'}}</p>
+                    </ion-label>
+                </ion-note>
+            </ion-item>
+        </ion-card>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && headers.length == 0;">
+        <div class="makeitcenter">
+            <img class="opsimg" src="assets/local/content/shop.png" />
+            <ion-card-title>Oops !</ion-card-title>
+            <ion-card-content no-padding>
+                <p>Tidak ada riwayat.</p>
+            </ion-card-content>
+        </div>
+    </ng-container>
+
+</ion-content>

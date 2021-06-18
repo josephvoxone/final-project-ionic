@@ -1,0 +1,31 @@
+ion-content {
+  --background: linear-gradient(rgba(251, 175, 7, 0.48), #921f00), url("/assets/local/content/pattern.jpg");
+  // --background: url("/assets/local/welcome.jpg") center/100% no-repeat, -webkit-gradient(#eb01a5, #d13531);
+}
+
+ion-card-title {
+  font-size: 40px;
+  color: #fff;
+}
+
+.welcome {
+  padding: 30px;
+  position: absolute;
+  bottom: 3vh;
+}
+
+ion-button {
+  letter-spacing: 2pt;
+}
+
+.grad {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+}
+
+.seleksi {
+  background: #fff;
+  color: #eb6017;
+  width: fit-content;
+  padding: 0 7px;
+  border-radius: 10px;
+}

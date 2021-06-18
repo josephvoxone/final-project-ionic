@@ -1,0 +1,109 @@
+.title {
+  background: url("/assets/local/content/bg.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  // background-position: 50% -40vh;
+
+  ion-card-title {
+    font-size: 13pt;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  ion-card-header {
+    background: none;
+    padding: 0 40px;
+    padding-top: 30px;
+  }
+}
+
+.btn-menu img {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border-radius: 15px;
+  width: 60px;
+  outline: none;
+}
+
+.btn-menu {
+  ion-card-subtitle {
+    font-size: xx-small;
+    padding: 7px 0;
+  }
+
+  ion-col {
+    text-align: center;
+    text-align: -webkit-center;
+  }
+}
+
+.avatar {
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  height: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  outline: none;
+  width: 40px;
+  object-fit: cover;
+}
+
+.slide-menu {
+  ion-card {
+    height: 60vh;
+    margin: 30px 40px 50px;
+
+    ion-card-title {
+      font-size: 25pt;
+    }
+  }
+  ion-card.meal {
+    background: linear-gradient(55deg, rgba(244, 67, 54, 0.85), rgba(255, 167, 46, 0.64)),
+      url("/assets/local/menu/1.jpg") no-repeat;
+    background-size: cover;
+  }
+
+  ion-card.prasmanan {
+    background: linear-gradient(205deg, rgba(156, 39, 176, 0.47058823529411764), rgba(103, 58, 183, 0.9)),
+      url("/assets/local/menu/2.jpg") no-repeat;
+    background-size: cover;
+  }
+
+  ion-card.cbreak {
+    background: linear-gradient(135deg, rgba(41, 33, 30, 0.64), rgb(121, 85, 72)),
+      url("/assets/local/menu/4.jpg") no-repeat;
+    background-size: cover;
+  }
+
+  ion-card-header {
+    color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    // background: rgba(21, 21, 21, 0.45);
+  }
+
+  ion-card-title:after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 8%;
+    border-radius: 15px;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+  }
+
+  ion-card-title {
+    padding-bottom: 16px;
+  }
+
+  ion-card-subtitle,
+  ion-card-title {
+    color: #fff;
+  }
+}
+
+ion-slides {
+  --bullet-background: #000;
+  // --bullet-background-active: rebeccapurple;
+}

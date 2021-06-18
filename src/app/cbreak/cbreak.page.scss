@@ -1,0 +1,150 @@
+ion-card {
+  box-shadow: none;
+  padding: 0 12px 25px 0;
+  height: 285px;
+}
+
+.item {
+  float: left;
+  width: 50%;
+  outline: none;
+
+  .content {
+    padding-top: 10px;
+  }
+
+  ion-card-subtitle {
+    font-size: 12px;
+  }
+
+  // Variable Clamp Text
+  $line-height: 1.4;
+  $lines-to-show: 2;
+
+  ion-card-title {
+    width: fit-content;
+    $font-size: 14px;
+    color: #31353b;
+    // LINE CLAMP
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    max-width: 155px;
+    // height: $font-size * $line-height * $lines-to-show; /* Fallback for non-webkit */
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ion-label {
+    span {
+      font-size: 12px;
+    }
+  }
+
+  p {
+    margin: 5px 0;
+    $font-size: 12px;
+    // LINE CLAMP
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    max-width: 155px;
+    height: $font-size * $line-height * $lines-to-show; /* Fallback for non-webkit */
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    border-radius: 10px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+ion-header ion-searchbar {
+  background-color: #fff; opacity: 1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.header {
+  font-size: 17px;
+  padding: 10px 0;
+}
+
+.item-scrolling {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 10px;
+
+  .item {
+    flex: 0 0 auto;
+    width: 45%;
+  }
+}
+
+ion-fab {
+  ion-badge {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    z-index: 1;
+  }
+}
+
+ion-button.nyam-btn {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+  width: inherit;
+
+  ion-card-title {
+    font-size: 16px;
+    color: #ffff;
+    line-height: inherit;
+  }
+  p {
+    color: #ffff;
+    font-weight: 500;
+    line-height: inherit;
+  }
+  ion-icon{
+    position: absolute;
+    left: 5vw;
+  }
+}
+
+.belowzero {
+  position: fixed;
+  bottom: 2%;
+  width: 100%;
+  left: 0;
+  padding: 0 16px;
+}
+
+ion-card-title.price {
+  background: #ff9800;
+  padding: 0 5px;
+  color: #fff !important;
+  border-radius: 3px;
+}
+
+.konten {
+  position: relative;
+
+  span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff5f5;
+    background: rgba(62, 62, 62, 0.67);
+    font-weight: 800;
+    padding: 2px 3px;
+    border-radius: 3px;
+  }
+}

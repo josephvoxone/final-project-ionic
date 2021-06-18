@@ -1,0 +1,8 @@
+{
+  "name": "nyam-apps",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "ac1666c7"
+}

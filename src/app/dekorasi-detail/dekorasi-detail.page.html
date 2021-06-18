@@ -1,0 +1,42 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="light"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div class="bg-content">
+    <img [src]="item.image" (click)="imageClick()" />
+    <div class="bot-left">
+      <ion-card-subtitle>Dekorasi</ion-card-subtitle>
+      <ion-card-title>{{item.name}}</ion-card-title>
+    </div>
+  </div>
+  <div padding class="harga">
+    <ion-label>
+      <h2><strong>Informasi</strong></h2>
+      <p>Anda hanya dapat memilih satu dekorasi untuk satu acara anda.</p>
+    </ion-label>
+  </div>
+  <div class="detail" padding>
+    <ion-label>
+      <h2><strong>Deskripsi</strong></h2>
+    </ion-label>
+    <ng-container *ngIf="show; else elseTemplate">
+      <p> {{ (item.desc | slice:0:100) + '.. ' }}<ion-text color="secondary" (click)="showMore()">selengkapnya
+        </ion-text>
+      </p>
+    </ng-container>
+    <ng-template #elseTemplate>
+      <p>{{item.desc}}</p>
+    </ng-template>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="belowzero">
+    <ion-button class="nyam-btn" margin-top expand="block" strong (click)="setDecor(item)">Pilih Dekorasi</ion-button>
+  </div>
+</ion-footer>

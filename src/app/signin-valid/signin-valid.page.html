@@ -1,0 +1,50 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="validSMS">
+    <img padding-bottom src="assets/local/content/otp.png" />
+    <div class="konten">
+      <ion-card-title>Verifikasi Kode</ion-card-title>
+      <p><b>Masukkan kode verifikasi OTP</b></p>
+    </div>
+    <ion-row>
+      <ion-col size="2">
+        <ion-input class="otp" type="tel" placeholder="." maxlength="1" (keyup)="otpController($event,otp2,'')" #otp1 [(ngModel)]="phone.satu">
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input class="otp" type="tel" placeholder="." maxlength="1" (keyup)="otpController($event,otp3,otp1)" #otp2 [(ngModel)]="phone.dua">
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input class="otp" type="tel" placeholder="." maxlength="1" (keyup)="otpController($event,otp4,otp2)" #otp3 [(ngModel)]="phone.tiga">
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input class="otp" type="tel" placeholder="." maxlength="1" (keyup)="otpController($event,otp5,otp3)" #otp4 [(ngModel)]="phone.empat">
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input class="otp" type="tel" placeholder="." maxlength="1" (keyup)="otpController($event,otp6,otp4)" #otp5 [(ngModel)]="phone.lima">
+        </ion-input>
+      </ion-col>
+      <ion-col size="2">
+        <ion-input class="otp" type="tel" placeholder="." maxlength="1" (keyup)="otpController($event,'',otp5)" #otp6 [(ngModel)]="phone.enam">
+        </ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-button class="nyam-btn" margin-top expand="block" strong (click)="verifOTP()">Verifikasi
+    </ion-button>
+
+    <p no-margin padding-top text-center>Kode verifikasi tidak terkirim ?</p>
+    <p (click)="sendCode()" no-margin text-center style="color: #f48a0f;"><b>Kirim ulang kode</b></p>
+  </ion-grid>
+
+</ion-content>

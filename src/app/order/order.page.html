@@ -1,0 +1,171 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list-header>
+    <ion-label><b>Informasi Pemesanan</b></ion-label>
+  </ion-list-header>
+  <ion-item lines="none">
+    <ion-label>Tanggal Pengiriman</ion-label>
+    <ion-datetime displayFormat="DD MMMM YYYY" [min]="minDate" [(ngModel)]="trans.tanggal" [placeholder]="langDate">
+    </ion-datetime>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Jam Pengiriman</ion-label>
+    <ion-datetime displayFormat="HH:mm A" hourValues="06,07,08,09,10,11,12,13,14,15,16,17,18,19,20"
+      [(ngModel)]="trans.jam" placeholder="08.00 AM">
+    </ion-datetime>
+  </ion-item>
+  <ion-list-header>
+    <ion-label><b>Catatan</b></ion-label>
+  </ion-list-header>
+  <ion-item>
+    <ion-textarea [(ngModel)]="trans.catatan" placeholder="Tambahkan keterangan mengenai makananmu.."></ion-textarea>
+  </ion-item>
+
+  <ion-item-divider></ion-item-divider>
+  <ng-container *ngIf="alamat.length > 0; else elseTemplate">
+    <ion-list-header>
+      <ion-label><b>Alamat Pengiriman</b></ion-label>
+      <ion-label [routerLink]="[ '/akun-alamat' ]" routerDirection="forward" style="padding-right: 16px;outline: none;"
+        color="secondary"><b>Ubah</b></ion-label>
+    </ion-list-header>
+    <ion-radio-group [(ngModel)]="trans.id_location">
+      <ion-item *ngFor="let a of alamat;">
+        <ion-radio slot="start" color="secondary" [value]="a.id"></ion-radio>
+        <ion-label>
+          <h5>{{a.name}}</h5>
+          <p><ion-icon name="pin"></ion-icon> {{a.address}}</p>
+          <p *ngIf="a.detail"><ion-icon name="send"></ion-icon> {{a.detail}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-radio-group>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <ion-list-header>
+      <ion-label><b>Alamat Pengiriman</b></ion-label>
+      <ion-label [routerLink]="[ '/akun-alamat' ]" routerDirection="forward" style="padding-right: 16px;outline: none;"
+        color="secondary"><b>Tambah</b></ion-label>
+    </ion-list-header>
+    <ion-item text-center>
+      <ion-label>
+        <p>Tidak punya ada alamat pengiriman.</p>
+      </ion-label>
+    </ion-item>
+  </ng-template>
+
+
+
+  <ion-item-divider></ion-item-divider>
+  <ion-list-header>
+    <ion-label><b>Pesanan Anda</b></ion-label>
+    <ion-label (click)="openCart()" style="padding-right: 16px;outline: none;" color="secondary"><b>Ubah</b></ion-label>
+  </ion-list-header>
+  <ion-list class="list">
+    <!-- {{ item.count }} x {{ item.name }} - {{ item.price | currency:'Rp. ':'symbol' }} -->
+    <ng-container *ngIf="selectedItems.length > 0">
+      <ion-item lines="none" *ngFor="let item of selectedItems">
+        <ion-thumbnail slot="start">
+          <img [src]="item.image">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.name}}</h3>
+          <p>{{item.price | currency:'Rp. ':'symbol'}}</p>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+
+    <ion-item lines="none" *ngIf="selectedItems.length == 0">
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-container *ngIf="tipe != 'mealbox'">
+    <ion-item-divider></ion-item-divider>
+    <ion-list-header>
+      <ion-label><b>Dekorasi</b></ion-label>
+      <ion-label [routerLink]="[ '/dekorasi',{tipe:tipe} ]" routerDirection="forward" style="padding-right: 16px;outline: none;"
+        color="secondary">
+        <b>Ubah</b></ion-label>
+    </ion-list-header>
+
+    <ion-list>
+      <ion-item lines="none" *ngIf="decorService.dekorOrder.image">
+        <ion-thumbnail slot="start">
+          <img [src]="decorService.dekorOrder.image">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{decorService.dekorOrder.name}}</h2>
+          <p>{{decorService.dekorOrder.desc}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item lines="none" *ngIf="!decorService.dekorOrder.image">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+  <ion-item-divider></ion-item-divider>
+  <ion-list-header lines="full">
+    <ion-label><b>Rincian Tagihan</b></ion-label>
+  </ion-list-header>
+  <ion-grid padding-horizontal no-padding>
+    <ion-row>
+      <ion-col size="6">
+        <ion-label>
+          <h3>Ongkos Kirim</h3>
+          <h3>Subtotal</h3>
+        </ion-label>
+      </ion-col>
+      <ion-col size="6" text-right>
+        <ion-label>
+          <h3>{{ trans.ongkir | currency:'Rp. ' : 'symbol' : '1.0' }} </h3>
+          <h3>{{ subtotal | currency:'Rp. ' : 'symbol' : '1.0' }} </h3>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row style="border-top: 1px solid #d5d5d8">
+      <ion-col size="6">
+        <ion-label>
+          <h3>Total ({{porsi}} Porsi)</h3>
+        </ion-label>
+      </ion-col>
+      <ion-col size="6" text-right>
+        <ion-label>
+          <h3>{{ total |currency:'Rp. ' : 'symbol' : '1.0' }}</h3>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div class="belowzero">
+    <ion-button class="nyam-btn" margin-top expand="block" strong (click)="confirmOrder()">Konfirmasi Pesanan
+    </ion-button>
+  </div>
+</ion-content>

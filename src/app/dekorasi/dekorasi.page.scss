@@ -1,0 +1,93 @@
+ion-card {
+  box-shadow: none;
+  padding: 0 12px 25px 0;
+  height: 285px;
+}
+
+.item {
+  float: left;
+  width: 50%;
+  outline: none;
+
+  .content {
+    padding-top: 10px;
+  }
+
+  ion-card-subtitle {
+    font-size: 12px;
+  }
+
+  // Variable Clamp Text
+  $line-height: 1.4;
+  $lines-to-show: 2;
+
+  ion-card-title {
+    width: fit-content;
+    $font-size: 14px;
+    color: #31353b;
+    // LINE CLAMP
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    max-width: 155px;
+    // height: $font-size * $line-height * $lines-to-show; /* Fallback for non-webkit */
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  ion-label {
+    span {
+      font-size: 12px;
+    }
+  }
+
+  p {
+    margin: 5px 0;
+    $font-size: 12px;
+    // LINE CLAMP
+    display: block; /* Fallback for non-webkit */
+    display: -webkit-box;
+    max-width: 155px;
+    height: $font-size * $line-height * $lines-to-show; /* Fallback for non-webkit */
+    font-size: $font-size;
+    line-height: $line-height;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    border-radius: 10px;
+    height: 150px;
+    object-fit: cover;
+  }
+}
+
+.header {
+  font-size: 17px;
+  padding: 10px 0;
+}
+
+ion-header {
+  background: #ffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.opsimg {
+  height: 170px;
+  filter: grayscale(1);
+  border-radius: 50px;
+}
+
+.makeitcenter {
+  text-align: center;
+  padding: 30% 0;
+
+  p {
+    color: #9e9e9e;
+  }
+}

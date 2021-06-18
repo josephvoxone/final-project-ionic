@@ -1,0 +1,39 @@
+.validSMS {
+  padding: 50px;
+
+  img {
+    height: 155px;
+    margin: auto;
+    display: grid;
+  }
+
+  ion-input {
+    padding: 0;
+    text-align: center;
+    font-size: 20pt;
+    border: solid 1px #ccc;
+    box-shadow: 0 0 5px #ccc inset;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+    border-radius: 3px;
+  }
+  p {
+    color: #6d6d6d;
+  }
+}
+
+.konten {
+  text-align: center;
+}
+
+ion-button.nyam-btn {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+}
+
+input.native-input.sc-ion-input-ios {
+  --padding-end: 0 !important;
+}
+
+ion-button {
+  letter-spacing: 2pt;
+}

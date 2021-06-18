@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar lines="none">
+    <ion-title>Menu Favorit</ion-title>
+    <ion-buttons slot="primary" [routerLink]="[ '/order-selesai', { id: review.id_htrans} ]" routerDirection="back">
+      <ion-icon name="close" slot="end"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="umpanbalik">
+    <img class="cookie" padding-bottom src="assets/local/content/cookie.png" />
+    <div class="konten">
+      <ion-card-title>Apa menu favoritmu ?</ion-card-title>
+      <p>Pilih makanan favoritmu untuk membantu kami menciptakan cita rasa yang baru.</p>
+    </div>
+    <ion-item no-padding *ngFor="let item of selectedItems">
+      <ion-thumbnail slot="start">
+        <img [src]="item.item_image" />
+      </ion-thumbnail>
+      <ion-label>
+        <h3>{{item.item_name}}</h3>
+        <p>{{item.item_desc}}</p>
+      </ion-label>
+      <ion-checkbox slot="end" color="secondary" (ionChange)="getCheckboxValues($event,item.id_item)"
+        [(ngModel)]="item.isChecked"></ion-checkbox>
+    </ion-item>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="belowzero">
+    <ion-button class="nyam-btn" margin-top expand="block" strong (click)="goKirim()">Kirim
+    </ion-button>
+  </div>
+</ion-footer>

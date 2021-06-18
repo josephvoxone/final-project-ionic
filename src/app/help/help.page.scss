@@ -1,0 +1,39 @@
+ion-content {
+  --background: linear-gradient(rgba(255, 193, 7, 0.85), rgba(146, 31, 0, 0.5882352941176471)),
+    url("/assets/local/content/pattern.jpg");
+}
+
+ion-toolbar {
+  --background: transparent;
+  --ion-color-base: transparent !important;
+}
+
+.help {
+  img {
+    height: 100px;
+  }
+
+  ion-card-subtitle,
+  ion-card-title,
+  p {
+    color: #fff;
+  }
+}
+
+ion-button.nyam-btn {
+  --background: linear-gradient(90deg, #fcb606, #e6421d);
+}
+
+ion-button {
+  letter-spacing: 2pt;
+}
+
+
+
+.belowzero {
+  position: sticky;
+  bottom: 2%;
+  width: 100%;
+  left: 0;
+  padding: 0 16px;
+}

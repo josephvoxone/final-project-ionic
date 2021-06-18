@@ -1,0 +1,22 @@
+**How to deploy ionic**
+1. `ionic cordova build android --prod --release`
+2. `cd` ke folder release
+3. kalo lom ada key buat di console `keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias`
+3.5. kalo ada key, sign ama `jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks app-release-unsigned.apk my-alias`
+4. buka folder android di `Android\android-sdk\build-tools\<api version>(lihat di android sdk)`
+5. copy _app-release-unsigned.apk_ kedalem
+6. `zipalign -v 4 app-release-unsigned.apk Socialite.apk`
+7. verify pake `jarsigner -verify -verbose -certs Socialite.apk`
+
+
+Buat Key :
+1. keytool -genkey -v -keystore my-release-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias my-alias
+2. MD5 : josephvoxone = b03ec0eba93988d95da87f05a1038295
+
+Jika sudah buat key :
+1. jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.jks app-release-unsigned.apk my-alias
+2. MD5 : josephvoxone = b03ec0eba93988d95da87f05a1038295
+
+Path dan Copy ke Android-SDK
+1. zipalign -v 4 app-release-unsigned.apk Nyam-Nyam.apk
+2. jarsigner -verify -verbose -certs Nyam-Nyam.apk

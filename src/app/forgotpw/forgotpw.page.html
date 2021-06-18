@@ -1,0 +1,25 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="konten">
+    <img padding-bottom src="assets/local/content/admin.png" />
+    <ion-card-title capitalize text-center>
+      Lupa password
+    </ion-card-title>
+    <p text-center style="font-size: smaller;color:#7b7b7b">
+      Silahkan masukkan nomor telepon akun anda. Setelah itu anda akan menerima kode OTP untuk validasi.
+    </p>
+
+    <ion-item class="item-forgot">
+      <ion-input placeholder="Nomor Telepon" required type="tel" [(ngModel)]="user.phone"></ion-input>
+      <ion-icon name="call" icon-start clear item-end></ion-icon>
+    </ion-item>
+    <ion-button type="submit" margin-top expand="block" strong (click)="forgotPW()" >KIRIM</ion-button>
+  </div>
+</ion-content>

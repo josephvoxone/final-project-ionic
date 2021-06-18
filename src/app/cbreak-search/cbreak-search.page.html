@@ -1,0 +1,79 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar debounce="500" [(ngModel)]="kueri.search" (ionChange)="findItem()" animated
+      placeholder="Cari menu apa ?">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen padding>
+  <ng-container *ngIf="items">
+    <ion-card-title class="header">Pilih Makanan Kesukaanmu</ion-card-title>
+    <ion-card no-margin class="item" *ngFor="let item of items" (click)="gotoPras(item)">
+      <div class="konten">
+        <img [src]="item.image" />
+        <span *ngIf="item.jumlah_rate > 0">
+          <ion-icon name="star" color="secondary"></ion-icon> {{item.jumlah_rate | number:'1.1-1'}}
+        </span>
+      </div>
+      <div class="content">
+        <ion-card-subtitle>{{item.name_label}}</ion-card-subtitle>
+        <ion-card-title>{{item.name}}</ion-card-title>
+        <ion-card-title class="price">{{item.price | currency:'Rp. ' : 'symbol' : '1.0'}}</ion-card-title>
+        <p>{{item.desc}}</p>
+      </div>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="loading">
+    <ion-card no-margin class="item" *ngFor="let number of [0,1,2,3]">
+      <ion-skeleton-text animated style="width: 150px;height: 150px;"></ion-skeleton-text>
+      <div class="content">
+        <ion-card-subtitle>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </ion-card-subtitle>
+        <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </div>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngIf="!loading && !found">
+    <div class="makeitcenter">
+      <img class="opsimg" src="assets/local/content/shop.png" />
+      <ion-card-title>Oops !</ion-card-title>
+      <ion-card-content no-padding>
+        <p padding-horizontal>Sepertinya menu yang anda cari tidak tersedia, coba cari yang lainnya.</p>
+      </ion-card-content>
+    </div>
+  </ng-container>
+
+</ion-content>
+
+<ion-footer no-border>
+  <ion-toolbar>
+    <div class="belowzero">
+      <ng-container *ngIf="items">
+        <ion-button color="light" class="sort" (click)="sortItem()">
+          <ion-icon name="shuffle"></ion-icon>
+        </ion-button>
+        <ion-button color="light" class="sort" (click)="filterItem()">
+          <ion-icon name="options"></ion-icon>
+        </ion-button>
+      </ng-container>
+
+      <ion-button *ngIf="cart.length > 0" class="nyam-btn" expand="block" strong (click)="openCart()">
+        <ion-icon name="cafe" slot="start"></ion-icon>
+        <ion-label>
+          <ion-card-title>
+            {{cart.length}} Menu
+          </ion-card-title>
+          <p>Katering Coffee Break</p>
+        </ion-label>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,101 @@
+{
+  "project_info": {
+    "project_number": "145696059093",
+    "firebase_url": "https://katering-2d5e9.firebaseio.com",
+    "project_id": "katering-2d5e9",
+    "storage_bucket": "katering-2d5e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145696059093:android:5bb3a9206d51ffdadafc5c",
+        "android_client_info": {
+          "package_name": "com.kateringku.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145696059093-t0a8cjjt87ran1vluatevue99peuj1o7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kateringku.app",
+            "certificate_hash": "6b89e1b96641057b9130dee8c603296a96f384c3"
+          }
+        },
+        {
+          "client_id": "145696059093-ad3p5ab3ai0tmkijpf8s2budv1nf9h2p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kateringku.app",
+            "certificate_hash": "907250a9b84e0be531e901938490b19d0708851c"
+          }
+        },
+        {
+          "client_id": "145696059093-d4q3rkd3rqj1q8tjqq32qbvh71tbnjpi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kateringku.app",
+            "certificate_hash": "8ffe5720dc650176feced980d8319d0d60d7eeda"
+          }
+        },
+        {
+          "client_id": "145696059093-q2ho2g3cnssvnl5qsp6cdk41j98u7d1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpItANWqVTlL-YQQm7RwUzB1gZG_q3g_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145696059093-q2ho2g3cnssvnl5qsp6cdk41j98u7d1u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145696059093:android:7e52ff55ba982f9b",
+        "android_client_info": {
+          "package_name": "id.co.catering.apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145696059093-ofrmtat80mjpupi6njv72p93er3olqsg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.co.catering.apps",
+            "certificate_hash": "8ffe5720dc650176feced980d8319d0d60d7eeda"
+          }
+        },
+        {
+          "client_id": "145696059093-q2ho2g3cnssvnl5qsp6cdk41j98u7d1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpItANWqVTlL-YQQm7RwUzB1gZG_q3g_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145696059093-q2ho2g3cnssvnl5qsp6cdk41j98u7d1u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

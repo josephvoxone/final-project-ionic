@@ -1,0 +1,73 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="close" color="light"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen padding>
+  <div class="help" text-center>
+    <img src="assets/local/content/logo-trans.png" margin-bottom />
+    <ion-card-subtitle>
+      Cara memesan
+    </ion-card-subtitle>
+    <ng-container *ngIf="tipe == 'mealbox'">
+      <ion-card-title>
+        Nasi Kotak
+      </ion-card-title>
+      <div class="konten" padding-horizontal text-justify>
+        <p>Dalam pemesanan nasi kotak, anda dapat memilih <b>5 isi nasi kotak</b>. Diantaranya terdapat lauk, olahan,
+          mie, sayur dan macam sebagainya</p>
+        <p>Untuk memesanan nasi kotak, <b>minimal 20 porsi</b>. Anda dapat mengatur jadwal pemesanan yang anda tentukan
+          sendiri beserta dengan alamatnya.</p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="tipe == 'prasmanan'">
+      <ion-card-title>
+        Prasmanan
+      </ion-card-title>
+      <div class="konten" padding-horizontal text-justify>
+        <p>Anda dapat memesan prasmanan dengan <b>minimal 5 menu makanan dengan minimal 50 porsi</b>, tidak ada jumlah
+          maksimal
+          dalam memilih menu prasmanan.</p>
+        <p>Dari masakan, olahan hingga minuman dapat anda pilih sesuai dengan selera anda, setiap menu yang anda pilih
+          akan dikalikan dengan jumlah porsi yang anda tentukan.</p>
+        <p>Anda juga dapat mengatur <b>jadwal pemesanan, alamat pengiriman dan dekorasi</b> yang digunakan untuk acara
+          anda.
+        </p>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="tipe == 'cbreak'">
+      <ion-card-title>
+        Coffee Break
+      </ion-card-title>
+      <div class="konten" padding-horizontal text-justify>
+        <p>Anda dapat memesan coffee break dengan <b>minimal 2 jenis minuman dan 3 jenis snack dengan minimal 50
+            porsi</b>, tidak ada jumlah maksimal dalam memilih menu coffee break.</p>
+        <p>Dari <b>snack dan berbagai jenis minuman seperti teh dan kopi</b> dapat anda pilih sesuai dengan selera anda,
+          setiap menu yang dipilih akan dikalikan dengan jumlah porsi yang anda tentukan.</p>
+        <p>Anda juga dapat mengatur <b>jadwal pemesanan, alamat pengiriman dan dekorasi</b> yang digunakan untuk acara
+          anda.
+        </p>
+      </div>
+    </ng-container>
+
+    <ion-card-title>
+      Cara Kerja Katering
+    </ion-card-title>
+    <div class="konten" padding-horizontal text-justify>
+      <p><b>Aplikasi ini dikelola oleh satu pihak katering</b>, setelah anda memesan katering maka akan dihubungi oleh
+        pihak
+        katering untuk mengkonfirmasi pesanan anda.</p>
+      <p>Anda juga dapat memesan <b>prasmanan, coffee break, dan nasi kotak</b> dalam satu jadwal yang sama.</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="belowzero">
+    <ion-button (click)="back()" class="nyam-btn" type="submit" margin-top expand="block" strong>Mengerti
+    </ion-button>
+  </div>
+</ion-footer>

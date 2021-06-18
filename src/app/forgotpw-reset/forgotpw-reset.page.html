@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Reset Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="konten">
+    <img padding-bottom src="assets/local/content/girl.png" />
+    <ion-card-title capitalize text-center>
+      Reset password
+    </ion-card-title>
+    <p text-center style="font-size: smaller;color:#7b7b7b">
+      Silakan masukkan password baru untuk akun anda dengan minimal 7 karakter.
+    </p>
+
+    <ion-item class="item-forgot">
+      <ion-input minlength="7" placeholder="Password" required type="password" [(ngModel)]="user.password"></ion-input>
+      <ion-icon name="lock" icon-start clear item-end></ion-icon>
+    </ion-item>
+    <ion-item class="item-forgot">
+      <ion-input minlength="7" placeholder="Konfirmasi Password" required type="password" [(ngModel)]="user.con">
+      </ion-input>
+      <ion-icon name="key" icon-start clear item-end></ion-icon>
+    </ion-item>
+    <div class="belowzero">
+      <ion-button class="nyam-btn" type="submit" [disabled]="user.con.length < 7 || user.password.length < 7"
+        margin-top expand="block" strong (click)="resetPW()">Ubah</ion-button>
+    </div>
+  </div>
+</ion-content>

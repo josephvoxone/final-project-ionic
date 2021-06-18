@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pengaturan Akun</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <!-- Profile -->
+    <ion-list-header>
+      <ion-label><b>Akun</b></ion-label>
+    </ion-list-header>
+    <ion-item [routerLink]="[ '/akun-profile' ]" routerDirection="forward">
+      <ion-icon mode="md" slot="start" color="medium" name="contact"></ion-icon>
+      <ion-label>
+        <h2>Profile</h2>
+        <p>Ubah akun data dirimu</p>
+      </ion-label>
+    </ion-item>
+    <ion-item [routerLink]="[ '/akun-password' ]" routerDirection="forward">
+      <ion-icon mode="md" slot="start" color="medium" name="lock"></ion-icon>
+      <ion-label>
+        <h2>Ubah Password</h2>
+        <p>Mengganti password lama dengan baru</p>
+      </ion-label>
+    </ion-item>
+    <ion-item [routerLink]="[ '/akun-alamat' ]" routerDirection="forward">
+      <ion-icon mode="md" slot="start" color="medium" name="home"></ion-icon>
+      <ion-label>
+        <h2>Alamat Tersimpan</h2>
+        <p>Tambahkan atau ubah alamat</p>
+      </ion-label>
+    </ion-item>
+    <ion-item (click)="signOut()">
+      <ion-icon mode="md" slot="start" color="medium" name="log-out"></ion-icon>
+      <ion-label>
+        <h2>Keluar</h2>
+        <p>Keluar dari aplikasi</p>
+      </ion-label>
+    </ion-item>
+    <!-- Other -->
+    <ion-list-header>
+      <ion-label><b>Lainnya</b></ion-label>
+    </ion-list-header>
+    <!-- <ion-item (click)="marketOpen()">
+      <ion-icon mode="md" slot="start" color="medium" name="information-circle"></ion-icon>
+      <ion-label>
+        <h2>Beta Tester</h2>
+        <p>Ikut partisipasi jadi tester</p>
+      </ion-label>
+    </ion-item> -->
+    <ion-item (click)="callCS()">
+      <ion-icon mode="md" slot="start" color="medium" name="call"></ion-icon>
+      <ion-label>
+        <h2>Customer Care</h2>
+        <p>Telepon layanan pelanggan</p>
+      </ion-label>
+    </ion-item>
+    <ion-item (click)="marketSurvey()">
+      <ion-icon mode="md" slot="start" color="medium" name="paper"></ion-icon>
+      <ion-label>
+        <h2>Kasih Masukan</h2>
+        <p>Beri review di Google Play</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
